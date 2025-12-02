@@ -90,7 +90,7 @@ middle. Here are some examples:
 * The server temperature is non-additive. The temperatures in the table below
   add up to `226.2`, but this value has no practical meaning.
 
-  | Host Name | Temperature (F) |
+  | Hostname | Temperature (F) |
   | --------- | --------------- |
   | MachineA  | 58.8            |
   | MachineB  | 86.1            |

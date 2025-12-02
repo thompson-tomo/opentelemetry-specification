@@ -14,7 +14,7 @@ OTLP Trace Data Format is primarily inherited from OpenCensus protocol. Several 
 
 1. Removed `Node` as a concept.
 2. Extended `Resource` to better describe the source of the telemetry data.
-3. Replaced attribute maps by lists of key/value pairs.
+3. Replaced attribute maps by lists of key-value pairs.
 4. Eliminated unnecessary additional nesting in various values.
 
 Changes 1-2 are conceptual, changes 3-4 improve performance.
@@ -50,7 +50,7 @@ message Resource {
 // multiple root spans, or none at all. Spans do not need to be
 // contiguous - there may be gaps or overlaps between spans in a trace.
 //
-// The next field id is 18.
+// The next field ID is 18.
 message Span {
   // trace_id is the unique identifier of a trace. All spans from the same trace share
   // the same `trace_id`. The ID is a 16-byte array. An ID with all zeroes
@@ -165,7 +165,7 @@ message Span {
   // This field is required.
   int64 end_time_unixnano = 9;
 
-  // attributes is a collection of key/value pairs. The value can be a string,
+  // attributes is a collection of key-value pairs. The value can be a string,
   // an integer, a double or the Boolean values `true` or `false`. Note, global attributes
   // like server name can be set using the resource API. Examples of attributes:
   //
@@ -189,7 +189,7 @@ message Span {
     // name is a user-supplied description of the event.
     string name = 2;
 
-    // attributes is a collection of attribute key/value pairs on the event.
+    // attributes is a collection of attribute key-value pairs on the event.
     repeated AttributeKeyValue attributes = 3;
 
     // dropped_attributes_count is the number of dropped attributes. If the value is 0,
@@ -221,7 +221,7 @@ message Span {
     // tracestate is the trace state associated with the link.
     repeated TraceStateEntry tracestate = 3;
 
-    // attributes is a collection of attribute key/value pairs on the link.
+    // attributes is a collection of attribute key-value pairs on the link.
     repeated AttributeKeyValue attributes = 4;
 
     // dropped_attributes_count is the number of dropped attributes. If the value is 0,
@@ -368,4 +368,4 @@ The benchmark encodes/decodes 1000 batches of 100 spans, each span containing 3 
 
 The results show OTLP/AttrList is 5-6 times faster than OpenCensus in encoding and about 3 times faster in decoding.
 
-Using google.protobuf.Timestamp instead of int64-encoded unix timestamp results in 1.18-1.32 times slower encoding and 1.21-1.38 times slower decoding (depending on what the span contains).
+Using google.protobuf.Timestamp instead of int64-encoded Unix timestamp results in 1.18-1.32 times slower encoding and 1.21-1.38 times slower decoding (depending on what the span contains).
