@@ -16,7 +16,7 @@ all: install-tools markdownlint textlint markdown-link-check misspell
 
 # Attempt to fix issues / regenerate tables.
 .PHONY: language-analysis
-fix: textlint misspell
+language-analysis: textlint misspell
 
 $(MISSPELL):
 	cd $(TOOLS_DIR) && go build -o $(MISSPELL_BINARY) github.com/client9/misspell/cmd/misspell
