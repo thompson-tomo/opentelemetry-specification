@@ -26,7 +26,7 @@ file_format: 1.0.0
 schema_url: https://opentelemetry.io/schemas/1.2.0
 
 # Definitions for each schema version in this family.
-# Note: the ordering of versions is defined according to semver
+# Note: the ordering of versions is defined according to SemVer
 # version number ordering rules.
 versions:
   <version_number_last>:
@@ -84,7 +84,7 @@ previous version to this version.
 The "changes" section is a sequence of transformations. Only one transformation
 is supported for section "all": "rename_attributes" transformation.
 
-"rename_attributes" transformation requires a map of key/value pairs, where the
+"rename_attributes" transformation requires a map of key-value pairs, where the
 key is the old name of the attribute used in the previous version, the value is
 the new name of the attribute starting from this version. Here is the structure:
 
@@ -322,7 +322,7 @@ individual transformation also performing the reverse conversion.
 ### Schema File Format Number
 
 The "file_format" setting in the schema file specifies the format version of the
-file. The format version follows the MAJOR.MINOR.PATCH format, similar to semver
+file. The format version follows the MAJOR.MINOR.PATCH format, similar to SemVer
 2.0.
 
 The "file_format" setting is used by consumers of the file to know if they are
@@ -440,7 +440,7 @@ file_format: 1.0.0
 schema_url: https://opentelemetry.io/schemas/1.1.0
 
 # Definitions for each schema version in this family.
-# Note: the ordering of versions is defined according to semver
+# Note: the ordering of versions is defined according to SemVer
 # version number ordering rules.
 versions:
   1.1.0:

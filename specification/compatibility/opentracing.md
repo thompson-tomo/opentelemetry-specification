@@ -336,7 +336,7 @@ Parameters:
 - The baggage value, a string.
 
 Creates a new `SpanContext` Shim with a new OpenTelemetry `Baggage` containing
-the specified `Baggage` key/value pair, and sets it as the current instance for
+the specified `Baggage` key-value pair, and sets it as the current instance for
 this `Span` Shim.
 
 This operation MUST be safe to be called concurrently.
@@ -367,7 +367,7 @@ Parameters:
 - The tag value, which must be either a string, a boolean value, or a numeric type.
 
 Calls `Set Attribute` on the underlying OpenTelemetry `Span` with the specified
-key/value pair.
+key-value pair.
 
 The `error` tag MUST be
 [mapped](https://github.com/opentracing/specification/blob/master/semantic_conventions.md#standard-span-tags-and-log-fields)
@@ -384,11 +384,11 @@ MUST be converted to a string.
 
 Parameters:
 
-- A set of key/value pairs, where keys must be strings, and the values may have
+- A set of key-value pairs, where keys must be strings, and the values may have
   any type.
 
 Calls `Add Events` on the underlying OpenTelemetry `Span` with the specified
-key/value pair set.
+key-value pair set.
 
 The `Add Event`'s `name` parameter MUST be the value with the `event` key in
 the pair set, or else fallback to use the `log` literal string.
@@ -400,10 +400,10 @@ to an `Event` with the conventions outlined in the
 
 - If an entry with `error.object` key exists and the value is a language-specific
   error object, a call to `RecordException(e)` is performed along the rest of
-  the specified key/value pair set as additional event attributes.
+  the specified key-value pair set as additional event attributes.
 - Else, a call to `AddEvent` is performed with `name` being set to `exception`,
-  along the specified key/value pair set as additional event attributes,
-  including mapping of the following key/value pairs:
+  along the specified key-value pair set as additional event attributes,
+  including mapping of the following key-value pairs:
   - `error.kind` maps to `exception.type`.
   - `message` maps to `exception.message`.
   - `stack` maps to `exception.stacktrace`.

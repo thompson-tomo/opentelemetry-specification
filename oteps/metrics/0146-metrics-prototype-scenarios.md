@@ -170,14 +170,14 @@ Both libraries will provide out-of-box metrics, the metrics have two categories:
 
 #### Server Climate Control Library
 
-Note: the **Host Name** should leverage [`OpenTelemetry
+Note: the **Hostname** should leverage [`OpenTelemetry
 Resource`](../../specification/resource/sdk.md),
 so it should be covered by the metrics SDK rather than API, and strictly
 speaking it is not considered as a "dimension" from the SDK perspective.
 
 **Server temperature:**
 
-| Host Name | Temperature (F) |
+| Hostname | Temperature (F) |
 | --------- | --------------- |
 | MachineA  | 65.3            |
 
@@ -186,19 +186,19 @@ can accept negative recordings and that they can be aggregated appropriately.
 
 **Server humidity:**
 
-| Host Name | Humidity (%) |
+| Hostname | Humidity (%) |
 | --------- | ------------ |
 | MachineA  | 21           |
 
 **Server CPU usage:**
 
-| Host Name | CPU usage (seconds) |
+| Hostname | CPU usage (seconds) |
 | --------- | ------------------- |
 | MachineA  | 100.1               |
 
 **Server Memory usage:**
 
-| Host Name | Memory usage (bytes) |
+| Hostname | Memory usage (bytes) |
 | --------- | -------------------- |
 | MachineA  | 1000000000           |
 | MachineA  | 2000000000           |
@@ -212,7 +212,7 @@ Baggage`](../../specification/baggage/api.md),
 strictly speaking it is not part of the metrics API, but it is considered as a
 "dimension" from the metrics SDK perspective.
 
-| Host Name | Process ID | Client Type | HTTP Method | HTTP Host | HTTP Flavor | Peer IP   | Peer Port | Host IP   | Host Port |
+| Hostname | Process ID | Client Type | HTTP Method | HTTP Host | HTTP Flavor | Peer IP   | Peer Port | Host IP   | Host Port |
 | --------- | ---------- | ----------- | ----------- | --------- | ----------- | --------- | --------- | --------- | --------- |
 | MachineA  | 1234       | Android     | GET         | otel.org  | 1.1         | 127.0.0.1 | 51327     | 127.0.0.1 | 80        |
 | MachineA  | 1234       | Android     | POST        | otel.org  | 1.1         | 127.0.0.1 | 51328     | 127.0.0.1 | 80        |
@@ -222,7 +222,7 @@ strictly speaking it is not part of the metrics API, but it is considered as a
 
 Note: the server duration is only available for **finished HTTP requests**.
 
-| Host Name | Process ID | Client Type | HTTP Method | HTTP Host | HTTP Status Code | HTTP Flavor | Peer IP   | Peer Port | Host IP   | Host Port | Duration (ms) |
+| Hostname | Process ID | Client Type | HTTP Method | HTTP Host | HTTP Status Code | HTTP Flavor | Peer IP   | Peer Port | Host IP   | Host Port | Duration (ms) |
 | --------- | ---------- | ----------- | ----------- | --------- | ---------------- | ----------- | --------- | --------- | --------- | --------- | ------------- |
 | MachineA  | 1234       | Android     | GET         | otel.org  | 200              | 1.1         | 127.0.0.1 | 51327     | 127.0.0.1 | 80        | 8.5           |
 | MachineA  | 1234       | Android     | POST        | otel.org  | 304              | 1.1         | 127.0.0.1 | 51328     | 127.0.0.1 | 80        | 100.0         |
@@ -242,7 +242,7 @@ The application owner (developer Y) would only want the following metrics:
 * Server humidity - reported every minute
 * HTTP server request duration, reported every 5 seconds, with a subset of the
   dimensions:
-  * Host Name
+  * Hostname
   * HTTP Method
   * HTTP Host
   * HTTP Status Code
@@ -253,14 +253,14 @@ The application owner (developer Y) would only want the following metrics:
   * Total number of finished HTTP requests
   * Number of currently-in-flight HTTP requests (concurrent HTTP requests)
 
-  | Host Name | Process ID | HTTP Host | Received Requests | Finished Requests | Concurrent Requests |
+  | Hostname | Process ID | HTTP Host | Received Requests | Finished Requests | Concurrent Requests |
   | --------- | ---------- | --------- | ----------------- | ----------------- | ------------------- |
   | MachineA  | 1234       | otel.org  | 630               | 601               | 29                  |
   | MachineA  | 5678       | otel.org  | 1005              | 1001              | 4                   |
 * Exception samples (exemplar) - in case HTTP 5xx happened, developer Y would
-  want to see a sample request with trace id, span id and all the dimensions
+  want to see a sample request with trace ID, span ID and all the dimensions
   (IP, Port, etc.)
 
-  | Trace ID                         | Span ID          | Host Name | Process ID | Client Type | HTTP Method | HTTP Host | HTTP Status Code | HTTP Flavor | Peer IP   | Peer Port | Host IP   | Host Port | Exception            |
+  | Trace ID                         | Span ID          | Hostname | Process ID | Client Type | HTTP Method | HTTP Host | HTTP Status Code | HTTP Flavor | Peer IP   | Peer Port | Host IP   | Host Port | Exception            |
   | -------------------------------- | ---------------- | --------- | ---------- | ----------- | ----------- | --------- | ---------------- | ----------- | --------- | --------- | --------- | --------- | -------------------- |
   | 8389584945550f40820b96ce1ceb9299 | 745239d26e408342 | MachineA  | 1234       | iOS         | PUT         | otel.org  | 500              | 1.1         | 127.0.0.1 | 51329     | 127.0.0.1 | 80        | SocketException(...) |

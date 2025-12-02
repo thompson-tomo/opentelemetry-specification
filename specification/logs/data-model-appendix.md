@@ -275,13 +275,13 @@ When mapping from the unified model to HEC, we apply this additional mapping:
   <tr>
     <td>TraceId</td>
     <td>string</td>
-    <td>Request trace id.</td>
+    <td>Request trace ID.</td>
     <td>fields['trace_id']</td>
   </tr>
   <tr>
     <td>SpanId</td>
     <td>string</td>
-    <td>Request span id.</td>
+    <td>Request span ID.</td>
     <td>fields['span_id']</td>
   </tr>
   <tr>
@@ -715,7 +715,7 @@ All other fields |                    |                                         
   <tr>
     <td>host.id</td>
     <td>string</td>
-    <td>Unique host id.</td>
+    <td>Unique host ID.</td>
     <td>Resource["host.id"]</td>
   </tr>
   <tr>

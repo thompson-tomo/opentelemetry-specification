@@ -143,7 +143,7 @@ interfaces in the configuration data model:
 | [span exporter](../trace/sdk.md#span-exporter)                                              | +                                                                                  |
 | [span processor](../trace/sdk.md#span-processor)                                            | +                                                                                  |
 | [sampler](../trace/sdk.md#sampler)                                                          | +                                                                                  |
-| [id generator](../trace/sdk.md#id-generators)                                               | - [#70](https://github.com/open-telemetry/opentelemetry-configuration/issues/70)   |
+| [ID generator](../trace/sdk.md#id-generators)                                               | - [#70](https://github.com/open-telemetry/opentelemetry-configuration/issues/70)   |
 | [pull metric reader](../metrics/sdk.md#metricreader)                                        | +                                                                                  |
 | [push metric exporter](../metrics/sdk.md#metricexporter)                                    | +                                                                                  |
 | [metric producer](../metrics/sdk.md#metricproducer)                                         | +                                                                                  |
@@ -190,7 +190,7 @@ defined as part of any type, class, interface, etc. SDKs may organize them in
 whatever manner is idiomatic for the language.
 
 TODO: Add operation to update SDK components with new configuration for usage
-with OpAmp
+with OpAMP
 
 #### Parse
 
@@ -200,7 +200,7 @@ Parse and validate a [configuration file](./data-model.md#file-based-configurati
 
 * `file`: The [configuration file](./data-model.md#file-based-configuration-model) to parse. This MAY be a
   file path, or language specific file data structure, or a stream of a file's content.
-* `file_format`: The file format of the `file` (e.g. [yaml](./data-model.md#yaml-file-format)).
+* `file_format`: The file format of the `file` (e.g. [YAML](./data-model.md#yaml-file-format)).
   Implementations MAY accept a `file_format` parameter, or infer it from
   the `file` extension, or include file format specific overloads of `parse`,
   e.g. `parseYaml(file)`. If `parse` accepts `file_format`, the API SHOULD be
@@ -230,7 +230,7 @@ user MUST not be required to specify an empty object (i.e. `drop: {}`) in these
 cases.
 
 When encountering a reference to
-a [SDK extension component](#sdk-extension-components) which is not built in to
+a [SDK extension component](#sdk-extension-components) which is not built-in to
 the SDK, Parse MUST resolve corresponding configuration to a
 generic [ConfigProperties](./api.md#configproperties) representation as described
 in [Create Plugin](#create-plugin).
@@ -271,7 +271,7 @@ property is missing or present but null, Create fails fast since there is no
 default value for `exporter`.
 
 When encountering a reference to
-a [SDK extension component](#sdk-extension-components) which is not built in to
+a [SDK extension component](#sdk-extension-components) which is not built-in to
 the SDK, Create MUST resolve the component using [Create Plugin](#create-plugin)
 of the [`ComponentProvider`](#componentprovider) of the corresponding `type`
 and `name` used to [register](#register-componentprovider), including the
@@ -290,7 +290,7 @@ TODO: define behavior if some portion of configuration model is not supported
 
 The SDK MUST provide a mechanism to
 register [`ComponentProvider`](#componentprovider). The mechanism MAY be
-language-specific and automatic. For example, a java implementation might use
+language-specific and automatic. For example, a Java implementation might use
 the [service provider interface](https://docs.oracle.com/javase/tutorial/sound/SPI-intro.html)
 mechanism to register implementations of a particular interface
 as `ComponentProvider`s.
