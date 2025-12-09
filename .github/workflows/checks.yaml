@@ -17,11 +17,10 @@ jobs:
     - name: check out code
       uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6.0.1
 
-    - name: install dependencies
-      run: npm install
-
     - name: run markdownlint
-      run: make markdownlint
+      uses: DavidAnson/markdownlint-cli2-action@v21
+      with:
+        globs: '**/*.md'
 
   yamllint:
     runs-on: ubuntu-latest

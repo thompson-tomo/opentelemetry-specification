@@ -1,5 +1,5 @@
 # All documents to be used in spell check.
-ALL_DOCS := $(shell find . -type f -name '*.md' -not -path './.github/*' -not -path './node_modules/*' -not -path '*semantic_conventions*' -not -name 'spec-compliance-matrix.md' | sort)
+ALL_DOCS := $(shell find . -type f -name '*.md' -not -path './.github/*' -not -path './node_modules/*' | sort)
 PWD := $(shell pwd)
 
 TOOLS_DIR := ./internal/tools
@@ -70,12 +70,8 @@ markdown-toc:
 
 .PHONY: markdownlint
 markdownlint:
-	@if ! npm ls markdownlint; then npm install; fi
-	@for f in $(ALL_DOCS); do \
-		echo $$f; \
-		npx --no -p markdownlint-cli markdownlint -c .markdownlint.yaml $$f \
-			|| exit 1; \
-	done
+	@if ! npm ls markdownlint-cli2; then npm install; fi
+	npx --no -- markdownlint-cli2 '**/*.md'
 
 .PHONY: install-yamllint
 install-yamllint:
